@@ -1,0 +1,31 @@
+a {
+  text-decoration: none;
+}
+
+.logo {
+  width: 150px;
+}
+.logo img {
+  width: 100%;
+}
+
+.navigator {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.navigator__link {
+  color: #ccc;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.navigator__link:hover {
+  color: #ccc;
+  letter-spacing: 1rem;
+}
+
+.login {
+  text-align: right;
+}
