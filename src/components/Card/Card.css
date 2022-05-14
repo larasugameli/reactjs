@@ -1,0 +1,54 @@
+.card-item {
+  font-family: "Montserrat";
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid #5e5e5e;
+  padding: 5px;
+}
+
+.card-item img {
+  width: 100%;
+}
+.card-categoria {
+  font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 1px;
+  font-weight: 700;
+  color: #3cfce2;
+}
+
+.card-nombre {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.card-item span {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.card-button {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0px;
+  font-family: "Monserrat";
+  color: #ffffff;
+  font-size: 13px;
+  background: #5e5e5e;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.card-button:hover {
+  background: #3cfce2;
+  text-decoration: none;
+}
+
+.productos-destacados {
+  text-align: center;
+  padding: 8px 0;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+}
