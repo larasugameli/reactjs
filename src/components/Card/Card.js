@@ -1,11 +1,11 @@
 import "./Card.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import { Button } from "@mui/material";
+import ItemCount from "../ItemCount/ItemCount";
 
 //Funcional Component
 
-const CardItem = ({ image, tittle, category, price }) => {
+const CardItem = ({ image, name, category, price }) => {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
@@ -14,11 +14,9 @@ const CardItem = ({ image, tittle, category, price }) => {
             <img src={`./${image}`} alt="logo" />
           </div>
           <p className="card-categoria">{category}</p>
-          <p className="card-nombre">{tittle}</p>
+          <p className="card-nombre">{name}</p>
           <span> {`$${price}`}</span>
-          <div className="card-button">
-            <Button style={{ color: "#FFF" }}>Agregar al Carrito</Button>
-          </div>
+          <ItemCount />
         </div>
       </CardContent>
     </Card>

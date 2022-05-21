@@ -52,3 +52,18 @@
   text-transform: uppercase;
   font-family: "Montserrat";
 }
+
+.count-item {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #b6b5b5;
+  margin-bottom: 10px;
+}
+.count-item .count-cant {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.count-item button {
+  font-weight: 700;
+}

@@ -1,16 +1,16 @@
 import CardItem from "../Card/Card";
 import { Grid } from "@mui/material";
 
-const CardList = () => {
+const ItemListContainer = ({ title, products }) => {
   return (
     <>
-      <h2 className="productos-destacados">Productos Destacados</h2>
+      <h2 className="productos-destacados">{title}</h2>
       <Grid container>
         <Grid item md={3} className="card-container">
           <CardItem
             image={"ClasicoNegro.png"}
             category="Basic"
-            tittle="Clásico Negro"
+            name="Clásico Negro"
             price={400}
           />
         </Grid>
@@ -18,7 +18,7 @@ const CardList = () => {
           <CardItem
             image={"Paltas.png"}
             category="Morfi"
-            tittle="Paltas"
+            name="Paltas"
             price={400}
           />
         </Grid>
@@ -26,7 +26,7 @@ const CardList = () => {
           <CardItem
             image={"Homero.png"}
             category="Kids"
-            tittle="Homero"
+            name="Homero"
             price={400}
           />
         </Grid>
@@ -34,7 +34,7 @@ const CardList = () => {
           <CardItem
             image={"Patitas.png"}
             category="wild"
-            tittle="Patitas"
+            name="Patitas"
             price={400}
           />
         </Grid>
@@ -43,4 +43,4 @@ const CardList = () => {
   );
 };
 
-export default CardList;
+export default ItemListContainer;
