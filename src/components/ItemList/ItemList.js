@@ -1,7 +1,7 @@
 // agrupador de un set de componentes item.js (incluirlo dentro del ItemListContener)
 //promise-efecto de montje, 2 segundos
 
-import CardItem from "../Card/Card";
+import CardItem from "../CardItem/CardItem";
 import { Grid } from "@mui/material";
 import { useState, useEffect } from "react";
 
