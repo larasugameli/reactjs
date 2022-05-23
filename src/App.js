@@ -9,7 +9,8 @@ function App() {
       <NavBar />
       <div className="general-cointeiner">
         <ItemListContainer title={"Productos Recomendados"} />
-        <ItemListContainer title={"Todos nuestros Productos"} />
+        {/*         <ItemListContainer title={"Todos nuestros Productos"} />
+         */}{" "}
       </div>
     </div>
   );

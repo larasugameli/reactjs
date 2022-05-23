@@ -5,7 +5,7 @@ import ItemCount from "../ItemCount/ItemCount";
 
 //Funcional Component
 
-const CardItem = ({ image, name, category, price }) => {
+const CardItem = ({ image, category, name, price }) => {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>

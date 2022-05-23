@@ -25,7 +25,7 @@ const ItemCount = () => {
       <div className="count-item">
         <p className="count-cant">Cantidad:</p>
 
-        <Button onClick={restCount} disabled={count == 0}>
+        <Button onClick={restCount} disabled={count === 0}>
           <KeyboardArrowDownIcon style={{ color: "#3cfce2" }} />
         </Button>
         <p>{count}</p>
