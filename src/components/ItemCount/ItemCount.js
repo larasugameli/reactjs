@@ -15,10 +15,14 @@ const ItemCount = () => {
   };
 
   const restCount = () => {
-    if (count > 0) {
+    if (count > 1) {
       setCount(count - 1);
     }
   };
+
+  function onAdd(count) {
+    console.log(`Agregaste ${count} al carrito`);
+  }
 
   return (
     <>
@@ -34,7 +38,12 @@ const ItemCount = () => {
         </Button>
       </div>
       <div className="card-button">
-        <Button onclick={console.log({ count })} style={{ color: "#FFF" }}>
+        <Button
+          onClick={() => {
+            onAdd(count);
+          }}
+          style={{ color: "#FFF" }}
+        >
           Agregar al Carrito
         </Button>
       </div>
