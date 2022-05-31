@@ -6,20 +6,23 @@ const ItemList = ({ title, products }) => {
     <>
       <h2 className="productos-destacados">{title}</h2>
       <Grid container>
-        {products.map(({ image, category, name, price, stock, id }) => {
-          return (
-            <Grid item md={3} key={id}>
-              <CardItem
-                image={image}
-                category={category}
-                name={name}
-                price={price}
-                stock={stock}
-                id={id}
-              />
-            </Grid>
-          );
-        })}
+        {products.map(
+          ({ image, category, name, price, stock, id, initial }) => {
+            return (
+              <Grid item md={3} key={id}>
+                <CardItem
+                  image={image}
+                  category={category}
+                  name={name}
+                  price={price}
+                  stock={stock}
+                  id={id}
+                  initial={initial}
+                />
+              </Grid>
+            );
+          }
+        )}
       </Grid>
     </>
   );

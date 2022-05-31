@@ -4,9 +4,8 @@ import { useState } from "react";
 import AddCircleOutlineTwoToneIcon from "@mui/icons-material/AddCircleOutlineTwoTone";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const ItemCount = () => {
+const ItemCount = ({ stock, initial, onAdd }) => {
   const [count, setCount] = useState(1);
-  const [stock, setStock] = useState(5);
 
   const addCount = () => {
     if (count < stock) {
@@ -15,14 +14,10 @@ const ItemCount = () => {
   };
 
   const restCount = () => {
-    if (count > 1) {
+    if (count > initial) {
       setCount(count - 1);
     }
   };
-
-  function onAdd(count) {
-    console.log(`Agregaste ${count} al carrito`);
-  }
 
   return (
     <>

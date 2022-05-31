@@ -1,4 +1,5 @@
 .contenedor-detalle {
+  padding-top: 3rem;
   box-sizing: border-box;
   font-size: 62.5%; /*esto hace que 1rem=10px8 */
   display: block;

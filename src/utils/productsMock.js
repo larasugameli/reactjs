@@ -1,35 +1,39 @@
 export const productos = [
   {
-    image: "ClasicoNegro.png",
-    category: "Basic",
+    image: "/ClasicoNegro.png",
+    category: "basic",
     name: "Clásico Negro",
     price: 400,
     stock: 20,
     id: 1,
+    initial: 1,
   },
   {
-    image: "Paltas.png",
-    category: "Morfi",
+    image: "/Paltas.png",
+    category: "morfi",
     name: "Paltas",
     price: 400,
     stock: 15,
     id: 2,
+    initial: 1,
   },
   {
-    image: "Homero.png",
-    category: "Kids",
+    image: "/Homero.png",
+    category: "kids",
     name: "Homero",
     price: 400,
     stock: 12,
     id: 3,
+    initial: 1,
   },
   {
-    image: "Patitas.png",
-    category: "Wild",
+    image: "/Patitas.png",
+    category: "wild",
     name: "Patitas",
     price: 400,
     stock: 10,
     id: 4,
+    initial: 1,
   },
 ];
 
@@ -41,39 +45,4 @@ export const getProducts = () => {
   });
 };
 
-const producto1 = {
-  image: "ClasicoNegro.png",
-  category: "Basic",
-  name: "Clásico Negro",
-  price: 400,
-  stock: 20,
-  id: 1,
-};
-
-const producto2 = {
-  image: "Paltas.png",
-  category: "Morfi",
-  name: "Paltas",
-  price: 400,
-  stock: 15,
-  id: 2,
-};
-const producto3 = {
-  image: "Homero.png",
-  category: "Kids",
-  name: "Homero",
-  price: 400,
-  stock: 12,
-  id: 3,
-};
-const producto4 = {
-  image: "Patitas.png",
-  category: "Wild",
-  name: "Patitas",
-  price: 400,
-  stock: 10,
-  id: 4,
-};
-
 export default productos;
-export { producto1, producto2, producto3, producto4 };

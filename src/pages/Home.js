@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
-import ItemListContainer from "../components/ItemList/ItemList"
-
+import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 
 const Home = () => {
-    return (
+  return (
+    <div className="general-cointeiner">
+      <ItemListContainer title={"Productos Recomendados"} />
+    </div>
+  );
+};
 
-    )
-}
+export default Home;
