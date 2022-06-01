@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import ItemList from "./ItemList";
 import { getProducts } from "../../utils/productsMock";
+import Loading from "../Loading/Loading";
 
 const ItemListContainer = ({ title }) => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getProducts()
@@ -11,12 +13,17 @@ const ItemListContainer = ({ title }) => {
         setProducts(response);
       })
       .catch((err) => {})
-      .finally(() => {});
+      .finally(() => setLoading(false));
   }, []);
+
   return (
-    <div>
-      <ItemList title={"Productos Destacados"} products={products} />
-    </div>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <ItemList title={"Productos Destacados"} products={products} />
+      )}
+    </>
   );
 };
 

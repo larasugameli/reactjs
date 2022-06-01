@@ -58,7 +58,7 @@ const NavBar = () => {
                     aria-controls={open ? "basic-menu" : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? "true" : undefined}
-                    onClick={handleClick}
+                    onMouseEnter={handleClick}
                   >
                     Productos
                   </Button>
@@ -66,19 +66,21 @@ const NavBar = () => {
                     id="basic-menu"
                     anchorEl={anchorEl}
                     open={open}
-                    onClose={handleClose}
+                    onMouseLeave={handleClose}
                   >
                     {categories.map((cat) => {
                       return (
                         <MenuItem
                           className="navigator__link"
                           onClick={handleClose}
+                          key={cat}
                         >
                           <Link
                             style={{
                               textDecoration: "none",
                               textTransform: "uppercase",
-                              color: "#000",
+                              fontSize: "15px",
+                              color: "#5e5e5e",
                             }}
                             to={`/products/${cat}`}
                           >
