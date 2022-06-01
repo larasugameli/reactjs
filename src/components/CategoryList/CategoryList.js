@@ -8,18 +8,17 @@ const CategoryList = () => {
   const { category } = useParams();
 
   useEffect(() => {
-    setProducts([]);
-    console.log("category: ", category);
-    getProducts().then((response) => {
-      filterByCategory(response);
-    });
     const filterByCategory = (array) => {
       return array.map((item) => {
         if (item.category === category) {
-          return setProducts((products) => [...products, item]);
+          return setProducts(() => [...products, item]);
         }
       });
     };
+
+    getProducts().then((response) => {
+      filterByCategory(response);
+    });
   }, [category]);
 
   return (
