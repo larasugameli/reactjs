@@ -1,8 +1,16 @@
 //Muestra la informacion de la pantalla de detalle
 import "./ItemDetail.css";
+import ItemCount from "../ItemCount/ItemCount";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
 const ItemDetail = ({ data }) => {
+  const [showButton, setShowbutton] = useState(false);
+
+  function onAdd(count) {
+    console.log(`Agregaste ${count} al carrito`);
+  }
   return (
     <div className="contenedor-detalle">
       <img src={data.image} alt="pgrab" />
@@ -11,20 +19,31 @@ const ItemDetail = ({ data }) => {
           Home > {data.category} >{" "}
           <span style={{ color: "#3cfce2" }}> {data.name} </span>
         </p>
-        <h2> {data.name}</h2>
-        <span> {`$${data.price}`}</span>
-
-        <form className="form">
-          <input
-            className="form__ok"
-            type="number"
-            placeholder="Cantidad"
-            min="1"
+        <div className="contenedor-nombreyprecio">
+          <h2> {data.name}</h2>
+          <span> {`$${data.price}`}</span>
+        </div>
+        {!showButton ? (
+          <ItemCount
+            stock={data.stock}
+            initial={data.initial}
+            onAdd={onAdd}
+            setShowbutton={setShowbutton}
           />
+        ) : (
           <div className="card-button">
-            <Button style={{ color: "#FFF" }}>Agregar al Carrito</Button>
+            <Button>
+              {" "}
+              <Link
+                style={{ textDecoration: "none", color: "#FFF" }}
+                to="/cart"
+              >
+                {" "}
+                Finalizar Compra{" "}
+              </Link>
+            </Button>
           </div>
-        </form>
+        )}
       </div>
     </div>
   );

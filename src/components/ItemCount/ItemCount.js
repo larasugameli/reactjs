@@ -4,7 +4,7 @@ import { useState } from "react";
 import AddCircleOutlineTwoToneIcon from "@mui/icons-material/AddCircleOutlineTwoTone";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial, onAdd, setShowbutton }) => {
   const [count, setCount] = useState(1);
 
   const addCount = () => {
@@ -35,6 +35,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       <div className="card-button">
         <Button
           onClick={() => {
+            setShowbutton(true);
             onAdd(count);
           }}
           style={{ color: "#FFF" }}
