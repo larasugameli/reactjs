@@ -3,12 +3,25 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
 
 //Funcional Component
 const CardItem = ({ image, category, name, price, stock, initial, id }) => {
-  function onAdd(count) {
-    console.log(`Agregaste ${count} al carrito`);
+  const { addProductToCart } = useContext(CartContext);
+
+  function onAdd() {
+    addProductToCart({
+      image,
+      category,
+      name,
+      price,
+      stock,
+      initial,
+      id,
+    });
   }
+
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>

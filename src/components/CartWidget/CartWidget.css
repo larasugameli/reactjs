@@ -1,0 +1,46 @@
+.container-itemlistcard {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40px;
+  padding: 15px;
+  font-family: "Montserrat";
+}
+
+.container-itemlistcard p {
+  font-weight: 400;
+  text-align: center;
+  padding: 30px;
+}
+
+.empezarAComprar {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #5e5e5e;
+  padding: 10px 20px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.item-cart {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  width: 500px;
+  position: inherit;
+  align-items: center;
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  align-items: center;
+  width: auto;
+  height: auto;
+}
+
+.cart-action {
+  padding: 60px;
+}

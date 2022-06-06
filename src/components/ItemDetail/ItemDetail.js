@@ -10,7 +10,9 @@ const ItemDetail = ({ data }) => {
 
   function onAdd(count) {
     console.log(`Agregaste ${count} al carrito`);
+    setShowbutton(true);
   }
+
   return (
     <div className="contenedor-detalle">
       <img src={data.image} alt="pgrab" />

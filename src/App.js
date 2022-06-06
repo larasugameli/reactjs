@@ -9,25 +9,28 @@ import NotFound from "./pages/NotFound";
 import Detalle from "./pages/Detalle";
 import NavBar from "./components/NavBar/NavBar";
 import Categoria from "./pages/Categoria";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
     //JSX
     <div className="navbar">
-      <BrowserRouter>
-        <NavBar />
+      <CartProvider>
+        <BrowserRouter>
+          <NavBar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/empresas" element={<Empresas />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/producto/:id" element={<Detalle />} />
-          <Route path="/products/:category" element={<Categoria />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/empresas" element={<Empresas />} />
+            <Route path="/contacto" element={<Contacto />} />
+            <Route path="/producto/:id" element={<Detalle />} />
+            <Route path="/products/:category" element={<Categoria />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </CartProvider>
     </div>
   );
 }
