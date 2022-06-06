@@ -4,12 +4,16 @@ import ItemCount from "../ItemCount/ItemCount";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useContext } from "react";
+import CartContext from "../../context/CartContext";
 
 const ItemDetail = ({ data }) => {
   const [showButton, setShowbutton] = useState(false);
-
-  function onAdd(count) {
-    console.log(`Agregaste ${count} al carrito`);
+  const { addProductToCart } = useContext(CartContext);
+  function onAdd(data) {
+    addProductToCart({
+      data,
+    });
     setShowbutton(true);
   }
 
