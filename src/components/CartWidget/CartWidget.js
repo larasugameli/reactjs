@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 const CartWidget = () => {
   const { cartListItems } = useContext(CartContext);
   const [anchorEl, setAnchorEl] = useState(null);
+  console.log(cartListItems);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -38,12 +39,12 @@ const CartWidget = () => {
           {cartListItems.length === 0 && (
             <>
               <p> No hay productos en el carrito</p>
-
               <Link className="empezarAComprar" to="./productos">
                 Empezar a comprar
               </Link>
             </>
           )}
+
           {cartListItems.map((item) => {
             return (
               <div className="item-cart" key={item.id}>

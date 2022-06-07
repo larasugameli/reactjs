@@ -7,32 +7,41 @@ import { Button } from "@mui/material";
 import { useContext } from "react";
 import CartContext from "../../context/CartContext";
 
-const ItemDetail = ({ data }) => {
+const ItemDetail = ({ item }) => {
   const [showButton, setShowbutton] = useState(false);
   const { addProductToCart } = useContext(CartContext);
-  function onAdd(data) {
+  const { image, category, name, price, stock, initial, id } = item;
+
+  function onAdd(count) {
     addProductToCart({
-      data,
+      image,
+      category,
+      name,
+      price,
+      stock,
+      initial,
+      id,
+      quantity: count,
     });
     setShowbutton(true);
   }
 
   return (
     <div className="contenedor-detalle">
-      <img src={data.image} alt="pgrab" />
+      <img src={item.image} alt="pgrab" />
       <div className="contendor-info">
         <p>
-          Home > {data.category} >{" "}
-          <span style={{ color: "#3cfce2" }}> {data.name} </span>
+          Home > {item.category} >{" "}
+          <span style={{ color: "#3cfce2" }}> {item.name} </span>
         </p>
         <div className="contenedor-nombreyprecio">
-          <h2> {data.name}</h2>
-          <span> {`$${data.price}`}</span>
+          <h2> {item.name}</h2>
+          <span> {`$${item.price}`}</span>
         </div>
         {!showButton ? (
           <ItemCount
-            stock={data.stock}
-            initial={data.initial}
+            stock={item.stock}
+            initial={item.initial}
             onAdd={onAdd}
             setShowbutton={setShowbutton}
           />

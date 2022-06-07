@@ -10,7 +10,7 @@ import CartContext from "../../context/CartContext";
 const CardItem = ({ image, category, name, price, stock, initial, id }) => {
   const { addProductToCart } = useContext(CartContext);
 
-  function onAdd() {
+  function onAdd(count) {
     addProductToCart({
       image,
       category,
@@ -19,6 +19,7 @@ const CardItem = ({ image, category, name, price, stock, initial, id }) => {
       stock,
       initial,
       id,
+      count,
     });
   }
 

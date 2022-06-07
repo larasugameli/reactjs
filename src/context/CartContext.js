@@ -14,9 +14,22 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const reduceCart = (product) => {
+    setCartListItems({
+      ...cartListItems,
+      cartListItems: cartListItems.filter((items) => items.id !== product.id),
+    });
+  };
+
+  const clearCart = () => {
+    cartListItems.length = 0;
+  };
+
   const data = {
     cartListItems,
     addProductToCart,
+    clearCart,
+    reduceCart,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
