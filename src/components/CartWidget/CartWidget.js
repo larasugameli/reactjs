@@ -5,11 +5,12 @@ import Menu from "@mui/material/Menu";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CartContext from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const CartWidget = () => {
-  const { cartListItems } = useContext(CartContext);
+  const { cartListItems, clearCart, reduceCart } = useContext(CartContext);
   const [anchorEl, setAnchorEl] = useState(null);
-  console.log(cartListItems);
+  console.log("desde CartWidget:", cartListItems);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -39,7 +40,7 @@ const CartWidget = () => {
           {cartListItems.length === 0 && (
             <>
               <p> No hay productos en el carrito</p>
-              <Link className="empezarAComprar" to="./productos">
+              <Link className="empezarAComprar" to="/home">
                 Empezar a comprar
               </Link>
             </>
@@ -58,15 +59,27 @@ const CartWidget = () => {
                 <div className="cart-info">
                   <p>{item.name}</p>
                   <span>${item.price}</span>
+                  <p>{item.count}</p>
                 </div>
                 <div className="cart-action">
                   <button>
-                    <DeleteIcon />
+                    <DeleteIcon onClick={reduceCart} />
                   </button>
                 </div>
               </div>
             );
           })}
+
+          {cartListItems.length !== 0 && (
+            <>
+              <div className="empezarAComprar">
+                <Button style={{ color: "#FFF" }} onClick={clearCart}>
+                  {" "}
+                  Vaciar Carrito{" "}
+                </Button>
+              </div>
+            </>
+          )}
         </div>
       </Menu>
     </div>

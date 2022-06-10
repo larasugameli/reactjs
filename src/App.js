@@ -7,6 +7,7 @@ import Empresas from "./pages/Empresas";
 import Productos from "./pages/Productos";
 import NotFound from "./pages/NotFound";
 import Detalle from "./pages/Detalle";
+import Carrito from "./pages/Carrito";
 import NavBar from "./components/NavBar/NavBar";
 import Categoria from "./pages/Categoria";
 import { CartProvider } from "./context/CartContext";
@@ -26,6 +27,7 @@ function App() {
             <Route path="/empresas" element={<Empresas />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/producto/:id" element={<Detalle />} />
+            <Route path="/cart" element={<Carrito />} />
             <Route path="/products/:category" element={<Categoria />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

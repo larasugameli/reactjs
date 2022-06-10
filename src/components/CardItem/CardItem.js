@@ -8,7 +8,7 @@ import CartContext from "../../context/CartContext";
 
 //Funcional Component
 const CardItem = ({ image, category, name, price, stock, initial, id }) => {
-  const { addProductToCart } = useContext(CartContext);
+  const { addProductToCart, cartListItems } = useContext(CartContext);
 
   function onAdd(count) {
     addProductToCart({
@@ -21,6 +21,7 @@ const CardItem = ({ image, category, name, price, stock, initial, id }) => {
       id,
       count,
     });
+    console.log(cartListItems);
   }
 
   return (

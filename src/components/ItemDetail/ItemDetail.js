@@ -21,7 +21,7 @@ const ItemDetail = ({ item }) => {
       stock,
       initial,
       id,
-      quantity: count,
+      count,
     });
     setShowbutton(true);
   }
