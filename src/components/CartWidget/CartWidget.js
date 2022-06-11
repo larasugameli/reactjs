@@ -11,6 +11,7 @@ const CartWidget = () => {
   const { cartListItems, clearCart, reduceCart } = useContext(CartContext);
   const [anchorEl, setAnchorEl] = useState(null);
   console.log("desde CartWidget:", cartListItems);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -63,7 +64,7 @@ const CartWidget = () => {
                 </div>
                 <div className="cart-action">
                   <button>
-                    <DeleteIcon onClick={reduceCart} />
+                    <DeleteIcon onClick={() => reduceCart(item.id)} />{" "}
                   </button>
                 </div>
               </div>

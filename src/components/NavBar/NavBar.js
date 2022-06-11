@@ -8,8 +8,12 @@ import Button from "@mui/material/Button";
 import CartWidget from "../CartWidget/CartWidget";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import CartContext from "../../context/CartContext";
+import { useContext } from "react";
 
 const NavBar = () => {
+  const { cartListItems } = useContext(CartContext);
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -115,7 +119,8 @@ const NavBar = () => {
                 </Link>
               </li>
             </ul>
-            <CartWidget />
+
+            {cartListItems.length !== 0 && <CartWidget />}
           </Toolbar>
         </AppBar>
       </div>

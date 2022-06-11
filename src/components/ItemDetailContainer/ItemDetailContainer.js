@@ -1,19 +1,29 @@
 //Se va a encargar de hacer la llamada a la promesa
 import { useEffect, useState } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { productos } from "../../utils/productsMock";
 import { useParams } from "react-router-dom";
+
+//Firebase
+import { doc, getDoc } from "firebase/firestore";
+import db from "../../utils/firebaseConfig";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [producto, setProducto] = useState({});
 
   useEffect(() => {
-    const productFilter = productos.find((product) => {
-      return product.id === parseInt(id);
+    getData().then((prod) => {
+      setProducto(prod);
     });
-    setProducto(productFilter);
   }, [id]);
+
+  const getData = async () => {
+    const docRef = doc(db, "productos", id);
+    const docSnaptshop = await getDoc(docRef);
+    let product = docSnaptshop.data();
+    producto.id = docSnaptshop.id;
+    return product;
+  };
 
   return (
     <>

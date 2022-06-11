@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,8 +12,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
 const Cart = () => {
-  const { cartListItems, totalPrice } = useContext(CartContext);
-  const [subtotal, setTotalPrice] = useState(0);
+  const { cartListItems, totalPrice, reduceCart } = useContext(CartContext);
 
   console.log("desde Cart", cartListItems);
   return (
@@ -43,6 +42,7 @@ const Cart = () => {
             <TableBody>
               {cartListItems.map((item) => {
                 const { id, image, name, price, count } = item;
+
                 return (
                   <TableRow
                     key={id}
@@ -59,9 +59,9 @@ const Cart = () => {
                     <TableCell align="right">{name}</TableCell>
                     <TableCell align="right">${price}</TableCell>
                     <TableCell align="right">{count}</TableCell>
-                    <TableCell align="right">precio*cantidad </TableCell>
+                    <TableCell align="right"> subtotal</TableCell>
                     <TableCell align="right">
-                      <DeleteIcon />
+                      <DeleteIcon onClick={() => reduceCart(item.id)} />
                     </TableCell>
                   </TableRow>
                 );

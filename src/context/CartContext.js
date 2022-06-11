@@ -9,17 +9,16 @@ const CartProvider = ({ children }) => {
   const addProductToCart = (product) => {
     let isInCart = cartListItems.find((cartItem) => cartItem.id === product.id);
     if (!isInCart) {
-      console.log("se agrego el producto:", product);
-      setTotalPrice(totalPrice + product.price * product.count);
+      /*       console.log("se agrego el producto:", product);
+       */
       setCartListItems((cartListItems) => [...cartListItems, product]);
     }
+    setTotalPrice(totalPrice + product.price * product.count);
   };
 
   const reduceCart = (itemId) => {
-    const itemToRemove = cartListItems.find((item) => item.id === itemId);
-    let indexOfItem = cartListItems.indexOf(itemToRemove);
-    cartListItems.splice(indexOfItem, 1);
-    setCartListItems((cartListItems) => [...cartListItems]);
+    const itemToRemove = cartListItems.filter((item) => item.id !== itemId);
+    setCartListItems(itemToRemove);
   };
 
   const clearCart = () => {

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import ItemList from "../ItemListContainer/ItemList";
 import { useParams } from "react-router-dom";
-import { getProducts } from "../../utils/productsMock";
 import Loading from "../Loading/Loading";
+
+//Firestore
+import { collection, getDocs } from "firebase/firestore";
+import db from "../../utils/firebaseConfig";
 
 const CategoryList = () => {
   const [products, setProducts] = useState([]);
@@ -10,7 +13,7 @@ const CategoryList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getProducts()
+    getData()
       .then((response) => {
         setProducts(
           category
@@ -21,6 +24,16 @@ const CategoryList = () => {
       .catch((err) => {})
       .finally(() => setLoading(false));
   }, [category]);
+
+  const getData = async () => {
+    const productSnapshot = await getDocs(collection(db, "productos"));
+    const productList = productSnapshot.docs.map((doc) => {
+      let product = doc.data();
+      product.id = doc.id;
+      return product;
+    });
+    return productList;
+  };
 
   return (
     <>
