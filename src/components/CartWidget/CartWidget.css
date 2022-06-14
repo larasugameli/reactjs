@@ -6,6 +6,14 @@
   font-family: "Montserrat";
 }
 
+.botones-carrito {
+  text-transform: uppercase;
+  background-color: #5e5e5e;
+  padding: 5px 10px;
+  font-weight: 500;
+  border-radius: 0;
+}
+
 .container-itemlistcard p {
   font-weight: 400;
   text-align: center;
@@ -13,14 +21,10 @@
 }
 
 .empezarAComprar {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-  background-color: #5e5e5e;
-  padding: 10px 20px;
-  font-weight: 600;
-  text-align: center;
-  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: flex-end;
 }
 
 .item-cart {
@@ -42,5 +46,5 @@
 }
 
 .cart-action {
-  padding: 60px;
+  padding: 10px;
 }

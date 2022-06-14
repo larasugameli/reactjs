@@ -1,0 +1,17 @@
+.carrito {
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  text-align: center;
+}
+.botones-carrito {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  position: relative;
+  align-items: center;
+}
+
+.boton-carrito {
+  background-color: #5e5e5e;
+  border: 1px solid #5e5e5e;
+}

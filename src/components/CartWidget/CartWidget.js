@@ -10,8 +10,8 @@ import { Button } from "@mui/material";
 const CartWidget = () => {
   const { cartListItems, clearCart, reduceCart } = useContext(CartContext);
   const [anchorEl, setAnchorEl] = useState(null);
-  console.log("desde CartWidget:", cartListItems);
-
+  /*   console.log("desde CartWidget:", cartListItems);
+   */
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -38,15 +38,6 @@ const CartWidget = () => {
         MenuListProps={{ "aria-labelledby": "basic-button" }}
       >
         <div className="container-itemlistcard">
-          {cartListItems.length === 0 && (
-            <>
-              <p> No hay productos en el carrito</p>
-              <Link className="empezarAComprar" to="/home">
-                Empezar a comprar
-              </Link>
-            </>
-          )}
-
           {cartListItems.map((item) => {
             return (
               <div className="item-cart" key={item.id}>
@@ -72,14 +63,18 @@ const CartWidget = () => {
           })}
 
           {cartListItems.length !== 0 && (
-            <>
-              <div className="empezarAComprar">
-                <Button style={{ color: "#FFF" }} onClick={clearCart}>
-                  {" "}
-                  Vaciar Carrito{" "}
+            <div className="empezarAComprar">
+              <div className="botones-carrito">
+                <Button onClick={clearCart} style={{ color: "#fff" }}>
+                  Vaciar Carrito
                 </Button>
               </div>
-            </>
+              <div className="botones-carrito">
+                <Link to="/cart" style={{ textDecoration: "none" }}>
+                  <Button style={{ color: "#fff" }}>Check out</Button>
+                </Link>
+              </div>
+            </div>
           )}
         </div>
       </Menu>
