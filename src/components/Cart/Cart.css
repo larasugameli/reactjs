@@ -9,9 +9,26 @@
   gap: 50px;
   position: relative;
   align-items: center;
+  text-align: center;
 }
 
 .boton-carrito {
   background-color: #5e5e5e;
   border: 1px solid #5e5e5e;
+}
+.boton-modal {
+  background-color: #5e5e5e;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.form-contact {
+  display: flex;
+  flex-direction: column;
 }

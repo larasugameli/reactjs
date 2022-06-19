@@ -1,5 +1,7 @@
 import "./Cart.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { Container, Button } from "@mui/material";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,18 +9,73 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Container, Button } from "@mui/material";
 import CartContext from "../../context/CartContext";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
+import Modal from "../Modal/Modal";
+import TextField from "@mui/material/TextField";
+import { addDoc, collection } from "firebase/firestore";
+import db from "../../utils/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartListItems, totalCartPrice, reduceCart, changeQuantityOfProduct } =
-    useContext(CartContext);
-
+  const {
+    cartListItems,
+    totalCartPrice,
+    reduceCart,
+    changeQuantityOfProduct,
+    clearCart,
+  } = useContext(CartContext);
   console.log("desde Cart", cartListItems);
+
+  const [showModal, setShowModal] = useState(false);
+  const [formValue, setFormValue] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
+
+  const [order, setOrder] = useState({
+    buyer: {},
+    items: cartListItems.map((item) => {
+      return {
+        id: item.id,
+        name: item.name,
+        price: item.price,
+      };
+    }),
+    total: totalCartPrice(),
+  });
+
+  const [success, setSuccess] = useState();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setOrder({ ...order, buyer: formValue });
+    saveData({ ...order, buyer: formValue });
+
+    console.log("order: ", order);
+  };
+
+  //DRY = Dont Repeat Yourself
+  const handleChange = (e) => {
+    setFormValue({ ...formValue, [e.target.name]: e.target.value });
+  };
+
+  const terminarOrden = () => {
+    navigate("/");
+  };
+
+  const saveData = async (newOrder) => {
+    const orderFirebase = collection(db, "ordenes");
+    const orderDoc = await addDoc(orderFirebase, newOrder);
+    console.log("orden generada: ", orderDoc.id);
+    setSuccess(orderDoc.id);
+    clearCart();
+  };
 
   return (
     <div className="carrito">
@@ -83,7 +140,6 @@ const Cart = () => {
                       <TableCell align="center">
                         <Button
                           style={{ color: "#3cfce2" }}
-                          className="button-quantity-control"
                           onClick={() => changeQuantityOfProduct(id, -1)}
                           disabled={count === 1}
                         >
@@ -92,7 +148,6 @@ const Cart = () => {
                         {count}{" "}
                         <Button
                           style={{ color: "#3cfce2" }}
-                          className="button-quantity-control"
                           onClick={() => changeQuantityOfProduct(item.id, +1)}
                           disabled={stock <= count}
                         >
@@ -119,9 +174,67 @@ const Cart = () => {
             <Button style={{ color: "#FFF" }}>Continuar Comprando</Button>
           </div>
           <div className="boton-carrito">
-            <Button style={{ color: "#FFF" }}>PAGAR</Button>
+            <Button
+              style={{ color: "#FFF" }}
+              onClick={() => setShowModal(true)}
+            >
+              Terminar Compra
+            </Button>
           </div>
         </div>
+        <Modal
+          title={success ? "Muchas Gracias!" : "Formulario de contacto"}
+          open={showModal}
+          handleClose={() => setShowModal(false)}
+        >
+          {success ? (
+            <div>
+              Ya estamos produciendo tu pedido!
+              <br />
+              <span> El código de tu orden es: {success} </span>
+              <button
+                className="boton-modal"
+                style={{ color: "#fff", stylefontWeight: 700 }}
+                onClick={terminarOrden}
+              >
+                Aceptar
+              </button>
+            </div>
+          ) : (
+            <form className="form-contact" onSubmit={handleSubmit}>
+              <TextField
+                id="outlined-basic"
+                name="name"
+                label="Nombre y Apellido"
+                variant="outlined"
+                value={formValue.name}
+                onChange={handleChange}
+              />
+              <TextField
+                id="outlined-basic"
+                name="phone"
+                label="Telefono"
+                variant="outlined"
+                value={formValue.phone}
+                onChange={handleChange}
+              />
+              <TextField
+                id="outlined-basic"
+                name="email"
+                label="Mail"
+                value={formValue.email}
+                variant="outlined"
+                onChange={handleChange}
+              />
+              <div>
+                {" "}
+                <button className="boton-modal" type="submit">
+                  Enviar
+                </button>
+              </div>
+            </form>
+          )}
+        </Modal>
       </Container>
     </div>
   );
