@@ -3,13 +3,11 @@
   text-transform: uppercase;
   text-align: center;
 }
-.botones-carrito {
+.botones-checkout {
   display: flex;
   flex-direction: row;
-  gap: 50px;
-  position: relative;
-  align-items: center;
-  text-align: center;
+  gap: 15px;
+  justify-content: flex-end;
 }
 
 .boton-carrito {
@@ -22,6 +20,8 @@
   text-align: center;
   color: #fff;
   text-transform: uppercase;
+  font-weight: bolder;
+
   border: none;
   padding: 10px;
   display: block;

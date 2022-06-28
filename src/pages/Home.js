@@ -1,10 +1,13 @@
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
-
+import Carrusel from "../components/Carrusel/Carrusel";
 const Home = () => {
   return (
-    <div className="general-cointeiner">
-      <ItemListContainer title={"Productos Recomendados"} />
-    </div>
+    <>
+      <Carrusel />
+      <div className="general-cointeiner">
+        <ItemListContainer title={"Productos Recomendados"} />
+      </div>
+    </>
   );
 };
 

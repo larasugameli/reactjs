@@ -31,11 +31,7 @@ const ItemListContainer = ({ title }) => {
 
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <ItemList title={"Productos Destacados"} products={products} />
-      )}
+      {loading ? <Loading /> : <ItemList title={title} products={products} />}
     </>
   );
 };

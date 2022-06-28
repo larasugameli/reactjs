@@ -21,7 +21,7 @@ const ItemDetailContainer = () => {
     const docRef = doc(db, "productos", id);
     const docSnaptshop = await getDoc(docRef);
     let product = docSnaptshop.data();
-    producto.id = docSnaptshop.id;
+    product.id = docSnaptshop.id;
     return product;
   };
 

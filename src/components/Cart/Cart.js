@@ -1,7 +1,6 @@
 import "./Cart.css";
 import { useContext, useState } from "react";
 import { Container, Button } from "@mui/material";
-
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -169,9 +168,12 @@ const Cart = () => {
           Total:
           <span> ${totalCartPrice()} </span>{" "}
         </p>
-        <div className="botones-carrito">
+
+        <div className="botones-checkout">
           <div className="boton-carrito">
-            <Button style={{ color: "#FFF" }}>Continuar Comprando</Button>
+            <Link style={{ textDecoration: "none" }} to="../../productos">
+              <Button style={{ color: "#FFF" }}>Continuar Comprando</Button>{" "}
+            </Link>
           </div>
           <div className="boton-carrito">
             <Button
@@ -182,6 +184,7 @@ const Cart = () => {
             </Button>
           </div>
         </div>
+
         <Modal
           title={success ? "Muchas Gracias!" : "Formulario de contacto"}
           open={showModal}

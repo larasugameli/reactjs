@@ -1,9 +1,12 @@
 import Cart from "../components/Cart/Cart";
+import { Container } from "@mui/material";
 
 const Carrito = () => {
   return (
     <>
-      <Cart />
+      <Container>
+        <Cart />
+      </Container>
     </>
   );
 };

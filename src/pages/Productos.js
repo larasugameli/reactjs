@@ -1,8 +1,13 @@
+import { Container } from "@mui/material";
+import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
+
 const Productos = () => {
   return (
     <div>
       {" "}
-      <h2>PRODUCTOS</h2>{" "}
+      <Container fixed>
+        <ItemListContainer title={"Todos nuestros diseños"} />
+      </Container>
     </div>
   );
 };

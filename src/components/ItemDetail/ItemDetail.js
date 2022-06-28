@@ -35,7 +35,7 @@ const ItemDetail = ({ item }) => {
           <span style={{ color: "#3cfce2" }}> {item.name} </span>
         </p>
         <div className="contenedor-nombreyprecio">
-          <h2> {item.name}</h2>
+          <h3> {item.name}</h3>
           <span> {`$${item.price}`}</span>
         </div>
         {!showButton ? (

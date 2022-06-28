@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ItemList from "../ItemListContainer/ItemList";
 import { useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import { Container } from "@mui/material";
 
 //Firestore
 import { collection, getDocs } from "firebase/firestore";
@@ -40,9 +41,14 @@ const CategoryList = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="general-container">
-          <ItemList title={`${category}`} products={products} />
-        </div>
+        <>
+          {" "}
+          <Container>
+            <div className="general-container">
+              <ItemList title={`${category}`} products={products} />
+            </div>
+          </Container>{" "}
+        </>
       )}
     </>
   );

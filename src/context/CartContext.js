@@ -2,16 +2,31 @@ import { createContext, useState } from "react";
 
 const CartContext = createContext();
 
+const calculateProdsInCart = (cartListItems) => {
+  const amount = cartListItems.reduce((acc, current) => {
+    return acc + current.amountInCart;
+  }, 0);
+  return amount;
+};
+
 const CartProvider = ({ children }) => {
-  const [cartListItems, setCartListItems] = useState([]);
+  const [cartListItems, setCartListItems] = useState(
+    JSON.parse(localStorage.getItem("products")) || []
+  );
+  const [prodsInCart, setProdsInCart] = useState(
+    calculateProdsInCart(cartListItems) || 0
+  );
+
   const [changeQuantity, setChangeQuantity] = useState(0);
 
   const addProductToCart = (product) => {
     let isInCart = cartListItems.find((cartItem) => cartItem.id === product.id);
     if (!isInCart) {
-      /*       console.log("se agrego el producto:", product);
-       */
-      setCartListItems((cartListItems) => [...cartListItems, product]);
+      localStorage.setItem(
+        "products",
+        JSON.stringify([...cartListItems, product])
+      );
+      return setCartListItems((cartListItems) => [...cartListItems, product]);
     }
   };
 
@@ -29,6 +44,14 @@ const CartProvider = ({ children }) => {
   const reduceCart = (itemId) => {
     const itemToRemove = cartListItems.filter((item) => item.id !== itemId);
     setCartListItems(itemToRemove);
+
+    const newCart = cartListItems.filter((product) => product.id !== itemId);
+    setCartListItems(newCart);
+    const newProdsInCart = itemToRemove.reduce((acc, current) => {
+      return acc + current.amountInCart;
+    }, 0);
+    setProdsInCart(newProdsInCart);
+    localStorage.setItem("products", JSON.stringify(newCart));
   };
 
   const changeQuantityOfProduct = (itemId, value) => {
@@ -41,6 +64,8 @@ const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCartListItems([]);
+    setProdsInCart(0);
+    localStorage.removeItem("products");
   };
 
   const data = {
@@ -51,7 +76,10 @@ const CartProvider = ({ children }) => {
     totalCartPrice,
     changeQuantityOfProduct,
     cartItemsQuantity,
+    prodsInCart,
   };
+
+  console.log("prods in cart:", prodsInCart);
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };
