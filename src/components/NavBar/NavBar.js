@@ -40,85 +40,87 @@ const NavBar = () => {
               </div>
             </Link>
 
-            <ul className="navigator">
-              <li>
-                <Link style={{ textDecoration: "none" }} to="/">
-                  <Button
-                    disableRipple
-                    variant="text"
-                    className="navigator__link"
-                  >
-                    Inicio
-                  </Button>
-                </Link>
-              </li>
-              <li>
-                <Link style={{ textDecoration: "none" }} to="/Productos">
-                  <Button
-                    disableRipple
-                    variant="text"
-                    className="navigator__link"
-                    id="basic-button"
-                    aria-controls={open ? "basic-menu" : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? "true" : undefined}
-                    onMouseEnter={handleClick}
-                  >
-                    Productos
-                  </Button>
-                  <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onMouseLeave={handleClose}
-                  >
-                    {categories.map((cat) => {
-                      return (
-                        <MenuItem
-                          className="navigator__link"
-                          onClick={handleClose}
-                          key={cat}
-                        >
-                          <Link
-                            style={{
-                              textDecoration: "none",
-                              textTransform: "uppercase",
-                              fontSize: "15px",
-                              color: "#5e5e5e",
-                            }}
-                            to={`/products/${cat}`}
+            <div class="container container-nav">
+              <ul className="navigator">
+                <li>
+                  <Link style={{ textDecoration: "none" }} to="/">
+                    <Button
+                      disableRipple
+                      variant="text"
+                      className="navigator__link"
+                    >
+                      Inicio
+                    </Button>
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }} to="/Productos">
+                    <Button
+                      disableRipple
+                      variant="text"
+                      className="navigator__link"
+                      id="basic-button"
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      onMouseEnter={handleClick}
+                    >
+                      Productos
+                    </Button>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onMouseLeave={handleClose}
+                    >
+                      {categories.map((cat) => {
+                        return (
+                          <MenuItem
+                            className="navigator__link"
+                            onClick={handleClose}
+                            key={cat}
                           >
-                            {cat}
-                          </Link>
-                        </MenuItem>
-                      );
-                    })}
-                  </Menu>
-                </Link>
-              </li>
-              <li>
-                <Link style={{ textDecoration: "none" }} to="/Empresas">
-                  <Button
-                    disableRipple
-                    variant="text"
-                    className="navigator__link"
-                  >
-                    Empresas
-                  </Button>
-                </Link>
-              </li>
-              <li>
-                <Link style={{ textDecoration: "none" }} to="/Contacto">
-                  <Button
-                    disableRipple
-                    variant="text"
-                    className="navigator__link"
-                  >
-                    Contacto
-                  </Button>
-                </Link>
-              </li>
-            </ul>
+                            <Link
+                              style={{
+                                textDecoration: "none",
+                                textTransform: "uppercase",
+                                fontSize: "15px",
+                                color: "#5e5e5e",
+                              }}
+                              to={`/products/${cat}`}
+                            >
+                              {cat}
+                            </Link>
+                          </MenuItem>
+                        );
+                      })}
+                    </Menu>
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }} to="/Empresas">
+                    <Button
+                      disableRipple
+                      variant="text"
+                      className="navigator__link"
+                    >
+                      Empresas
+                    </Button>
+                  </Link>
+                </li>
+                <li>
+                  <Link style={{ textDecoration: "none" }} to="/Contacto">
+                    <Button
+                      disableRipple
+                      variant="text"
+                      className="navigator__link"
+                    >
+                      Contacto
+                    </Button>
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
             {cartListItems.length !== 0 && <CartWidget />}
           </Toolbar>

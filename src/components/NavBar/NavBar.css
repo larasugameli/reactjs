@@ -32,3 +32,32 @@
   border-bottom: 1px solid #3cfce2;
   border-radius: 0%;
 }
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.container-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .container {
+    text-align: center;
+  }
+
+  .container-nav {
+    flex-direction: column;
+  }
+
+  .container-nav ul {
+    flex-direction: column;
+  }
+
+  .container-nav li {
+    margin: 0.8em 0;
+  }
+}

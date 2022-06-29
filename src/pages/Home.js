@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <>
       <Carrusel />
-      <div className="general-cointeiner">
+      <div>
         <ItemListContainer title={"Productos Recomendados"} />
       </div>
     </>

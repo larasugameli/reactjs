@@ -1,17 +1,23 @@
 import "./FormValidation.css";
 import { useForm } from "react-hook-form";
+import swal from "sweetalert";
 
 const FormValidation = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
   const customSubmit = (data) => {
-    //console.log(data)
-    alert(
-      "¡Gracias! Ya recibimos tu mensaje. Nos vamos a estar contando a la brevedad"
-    );
+    swal({
+      title: "¡Gracias!",
+      text: "Ya recibimos tu mensaje. Nos vamos a estar contando a la brevedad",
+      icon: "success",
+      button: "Aceptar",
+      timer: "5000",
+    });
+    reset();
   };
 
   return (
