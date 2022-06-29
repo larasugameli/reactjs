@@ -1,14 +1,16 @@
 import "./CartWidget.css";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useState, useContext } from "react";
-import Menu from "@mui/material/Menu";
-import DeleteIcon from "@mui/icons-material/Delete";
+
 import CartContext from "../../context/CartContext";
+
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
-import Badge from "@mui/material/Badge";
 
 import { styled } from "@mui/material/styles";
+import { Button } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {

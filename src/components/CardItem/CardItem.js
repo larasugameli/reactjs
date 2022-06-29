@@ -1,10 +1,13 @@
 import "./CardItem.css";
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+
 import ItemCount from "../ItemCount/ItemCount";
+import CartContext from "../../context/CartContext";
+
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import CartContext from "../../context/CartContext";
 
 //Funcional Component
 const CardItem = ({ image, category, name, price, stock, initial, id }) => {

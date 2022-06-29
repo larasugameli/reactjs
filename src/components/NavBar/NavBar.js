@@ -1,6 +1,8 @@
 import "./NavBar.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -9,7 +11,6 @@ import CartWidget from "../CartWidget/CartWidget";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import CartContext from "../../context/CartContext";
-import { useContext } from "react";
 
 const NavBar = () => {
   const { cartListItems } = useContext(CartContext);

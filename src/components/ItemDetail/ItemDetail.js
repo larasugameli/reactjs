@@ -1,10 +1,12 @@
 //Muestra la informacion de la pantalla de detalle
 import "./ItemDetail.css";
 import ItemCount from "../ItemCount/ItemCount";
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { useContext } from "react";
+
 import CartContext from "../../context/CartContext";
 
 const ItemDetail = ({ item }) => {

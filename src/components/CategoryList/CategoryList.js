@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import ItemList from "../ItemListContainer/ItemList";
+
 import { useParams } from "react-router-dom";
-import Loading from "../Loading/Loading";
+
 import { Container } from "@mui/material";
+
+import ItemList from "../ItemListContainer/ItemList";
+import Loading from "../Loading/Loading";
 
 //Firestore
 import { collection, getDocs } from "firebase/firestore";
