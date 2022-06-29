@@ -6,12 +6,24 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import CartContext from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import Badge from "@mui/material/Badge";
+
+import { styled } from "@mui/material/styles";
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    right: -3,
+    top: 8,
+    border: `1px solid ${theme.palette.background.paper}`,
+    padding: "0",
+  },
+}));
 
 const CartWidget = () => {
-  const { cartListItems, clearCart, reduceCart } = useContext(CartContext);
+  const { cartListItems, clearCart, reduceCart, cartItemsQuantity } =
+    useContext(CartContext);
   const [anchorEl, setAnchorEl] = useState(null);
-  /*   console.log("desde CartWidget:", cartListItems);
-   */
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,7 +42,7 @@ const CartWidget = () => {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       />
-
+      <StyledBadge badgeContent={`${cartItemsQuantity()}`}></StyledBadge>{" "}
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}

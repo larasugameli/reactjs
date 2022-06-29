@@ -20,9 +20,9 @@ h2 {
   color: #5e5e5e;
 }
 .imagen-home {
-  max-width: 80%;
+  max-width: 70%;
   display: block;
-  margin: -280px auto;
+  margin: 0 auto;
 }
 .banner-home {
   max-width: 80%;

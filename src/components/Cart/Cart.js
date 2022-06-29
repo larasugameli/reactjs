@@ -1,6 +1,8 @@
 import "./Cart.css";
-import { useContext, useState } from "react";
-import { Container, Button } from "@mui/material";
+
+import CartContext from "../../context/CartContext";
+import Modal from "../Modal/Modal";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,16 +10,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import CartContext from "../../context/CartContext";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Link } from "react-router-dom";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
-import Modal from "../Modal/Modal";
 import TextField from "@mui/material/TextField";
-import { addDoc, collection } from "firebase/firestore";
+
 import db from "../../utils/firebaseConfig";
+
 import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Container, Button } from "@mui/material";
+import { addDoc, collection } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const {
@@ -27,7 +31,6 @@ const Cart = () => {
     changeQuantityOfProduct,
     clearCart,
   } = useContext(CartContext);
-  console.log("desde Cart", cartListItems);
 
   const [showModal, setShowModal] = useState(false);
   const [formValue, setFormValue] = useState({
@@ -55,11 +58,8 @@ const Cart = () => {
     e.preventDefault();
     setOrder({ ...order, buyer: formValue });
     saveData({ ...order, buyer: formValue });
-
-    console.log("order: ", order);
   };
 
-  //DRY = Dont Repeat Yourself
   const handleChange = (e) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
   };
@@ -71,7 +71,6 @@ const Cart = () => {
   const saveData = async (newOrder) => {
     const orderFirebase = collection(db, "ordenes");
     const orderDoc = await addDoc(orderFirebase, newOrder);
-    console.log("orden generada: ", orderDoc.id);
     setSuccess(orderDoc.id);
     clearCart();
   };
@@ -186,7 +185,7 @@ const Cart = () => {
         </div>
 
         <Modal
-          title={success ? "Muchas Gracias!" : "Formulario de contacto"}
+          title={success ? "Muchas Gracias!" : "Formulario de compra"}
           open={showModal}
           handleClose={() => setShowModal(false)}
         >
@@ -206,28 +205,36 @@ const Cart = () => {
           ) : (
             <form className="form-contact" onSubmit={handleSubmit}>
               <TextField
+                style={{ padding: "8px" }}
+                required
                 id="outlined-basic"
                 name="name"
                 label="Nombre y Apellido"
-                variant="outlined"
+                variant="filled"
                 value={formValue.name}
                 onChange={handleChange}
               />
               <TextField
+                style={{ padding: "8px" }}
+                required
                 id="outlined-basic"
                 name="phone"
                 label="Telefono"
-                variant="outlined"
+                variant="filled"
                 value={formValue.phone}
                 onChange={handleChange}
+                type="number"
               />
               <TextField
+                style={{ padding: "8px" }}
+                required
                 id="outlined-basic"
                 name="email"
                 label="Mail"
                 value={formValue.email}
-                variant="outlined"
+                variant="filled"
                 onChange={handleChange}
+                type="email"
               />
               <div>
                 {" "}

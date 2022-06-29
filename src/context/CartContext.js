@@ -2,19 +2,9 @@ import { createContext, useState } from "react";
 
 const CartContext = createContext();
 
-const calculateProdsInCart = (cartListItems) => {
-  const amount = cartListItems.reduce((acc, current) => {
-    return acc + current.amountInCart;
-  }, 0);
-  return amount;
-};
-
 const CartProvider = ({ children }) => {
   const [cartListItems, setCartListItems] = useState(
     JSON.parse(localStorage.getItem("products")) || []
-  );
-  const [prodsInCart, setProdsInCart] = useState(
-    calculateProdsInCart(cartListItems) || 0
   );
 
   const [changeQuantity, setChangeQuantity] = useState(0);
@@ -31,7 +21,7 @@ const CartProvider = ({ children }) => {
   };
 
   const cartItemsQuantity = () => {
-    return cartListItems.reduce((acc, item) => acc + item.count, 0);
+    return cartListItems.reduce((acc, item) => (acc += item.count), 0);
   };
 
   const totalCartPrice = () => {
@@ -47,10 +37,7 @@ const CartProvider = ({ children }) => {
 
     const newCart = cartListItems.filter((product) => product.id !== itemId);
     setCartListItems(newCart);
-    const newProdsInCart = itemToRemove.reduce((acc, current) => {
-      return acc + current.amountInCart;
-    }, 0);
-    setProdsInCart(newProdsInCart);
+
     localStorage.setItem("products", JSON.stringify(newCart));
   };
 
@@ -64,7 +51,6 @@ const CartProvider = ({ children }) => {
 
   const clearCart = () => {
     setCartListItems([]);
-    setProdsInCart(0);
     localStorage.removeItem("products");
   };
 
@@ -76,10 +62,7 @@ const CartProvider = ({ children }) => {
     totalCartPrice,
     changeQuantityOfProduct,
     cartItemsQuantity,
-    prodsInCart,
   };
-
-  console.log("prods in cart:", prodsInCart);
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;
 };

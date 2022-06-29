@@ -12,6 +12,7 @@ UseStatus para almacenar el estado de los componentes, creando arrays para que s
 
 Para las rutas, utilice react-router-dom, importando BrowserRouter, Routes, Route y useParams.
 npm i react-responsive-carousel
+react-hook-form
 
 A traves de Promises hice los filtrados y mapeos de los productos a renderizar.
 

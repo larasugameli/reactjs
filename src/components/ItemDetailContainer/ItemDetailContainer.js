@@ -12,18 +12,18 @@ const ItemDetailContainer = () => {
   const [producto, setProducto] = useState({});
 
   useEffect(() => {
+       const getData = async () => {
+         const docRef = doc(db, "productos", id);
+         const docSnaptshop = await getDoc(docRef);
+         let product = docSnaptshop.data();
+         product.id = docSnaptshop.id;
+         return product;
+       };
     getData().then((prod) => {
       setProducto(prod);
     });
+ 
   }, [id]);
-
-  const getData = async () => {
-    const docRef = doc(db, "productos", id);
-    const docSnaptshop = await getDoc(docRef);
-    let product = docSnaptshop.data();
-    product.id = docSnaptshop.id;
-    return product;
-  };
 
   return (
     <>
